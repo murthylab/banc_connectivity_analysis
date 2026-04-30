@@ -12,15 +12,20 @@ banc.version <- Sys.getenv("BANC_VERSION", unset = "banc_888")
 gcs.bucket <- "gs://lee-lab_brain-and-nerve-cord-fly-connectome/compiled_data"
 gcs.bucket.legacy <- "gs://brain-and-nerve-cord_exports"
 
-.repo_root <- tryCatch(
-  normalizePath(file.path(dirname(sys.frame(1)$ofile), ".."), mustWork = TRUE),
-  error = function(e) getwd()
-)
+.repo_root <- tryCatch({
+  normalizePath(file.path(dirname(sys.frame(1)$ofile), ".."), mustWork = TRUE)
+}, error = function(e) {
+  # Fallback: try commandArgs for Rscript, then getwd()
+  args <- commandArgs(trailingOnly = FALSE)
+  f <- sub("^--file=", "", args[grep("^--file=", args)])
+  if (length(f)) normalizePath(file.path(dirname(f), "..")) else getwd()
+})
 cache_dir <- file.path(.repo_root, "data", "cache")
 dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
 
 # ── Libraries ──────────────────────────────────────────────
 suppressMessages({
+  library(bit64)
   library(dplyr)
   library(tidyr)
   library(readr)

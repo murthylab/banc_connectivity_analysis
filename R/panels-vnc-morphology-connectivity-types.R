@@ -21,15 +21,21 @@
 ###
 ### Usage: Rscript panels-vnc-morphology-connectivity-types.R
 ###########################################################
-source(file.path(dirname(sys.frame(1)$ofile), "startup.R"))
+.this_script <- tryCatch(normalizePath(sys.frame(1)$ofile), error = function(e) {
+  # Fallback for Rscript invocation
+  args <- commandArgs(trailingOnly = FALSE)
+  f <- sub("^--file=", "", args[grep("^--file=", args)])
+  if (length(f)) normalizePath(f) else stop("Cannot determine script path")
+})
+.this_dir <- dirname(.this_script)
+.this_repo <- normalizePath(file.path(.this_dir, ".."))
+
+source(file.path(.this_dir, "startup.R"))
 
 library(ggplot2)
 library(dplyr)
 
 message("### Figure: VNC morphology vs connectivity types ###")
-
-.this_repo <- normalizePath(file.path(dirname(sys.frame(1)$ofile), ".."), mustWork = FALSE)
-if (!nzchar(.this_repo) || !dir.exists(.this_repo)) .this_repo <- getwd()
 plot.dir <- file.path(.this_repo, "figs/figure_typing/links")
 data.dir <- file.path(.this_repo, "data")
 dir.create(plot.dir, recursive = TRUE, showWarnings = FALSE)

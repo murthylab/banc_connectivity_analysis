@@ -18,7 +18,15 @@
 ### Inspired by connectome_influence_maps/07_publication_heatmaps.R
 ###########################################################
 
-source(file.path(dirname(sys.frame(1)$ofile), "startup.R"))
+.this_script <- tryCatch(normalizePath(sys.frame(1)$ofile), error = function(e) {
+  args <- commandArgs(trailingOnly = FALSE)
+  f <- sub("^--file=", "", args[grep("^--file=", args)])
+  if (length(f)) normalizePath(f) else stop("Cannot determine script path")
+})
+.this_dir <- dirname(.this_script)
+.this_repo <- normalizePath(file.path(.this_dir, ".."))
+
+source(file.path(.this_dir, "startup.R"))
 
 suppressMessages({
   library(ComplexHeatmap)
@@ -27,8 +35,6 @@ suppressMessages({
 })
 
 # ── Paths ─────────────────────────────────────────────────
-.this_repo <- normalizePath(file.path(dirname(sys.frame(1)$ofile), ".."), mustWork = FALSE)
-if (!nzchar(.this_repo) || !dir.exists(.this_repo)) .this_repo <- getwd()
 output_dir <- file.path(.this_repo, "figs/figure_dimorphic/links")
 cache_dir  <- file.path(.this_repo, "data/banc")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
