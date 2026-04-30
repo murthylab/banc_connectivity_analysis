@@ -1,0 +1,8 @@
+Figure X. Ventral nerve cord type assignment validation.
+
+(A) Percentage agreement between morphology-based (NBLAST hits reviewed by human annotator), connectivity-based, and NBLAST-alone type assignments for VNC intrinsic neurons between BANC and MANC (n=12,779 total, 11,389 with MANC NBLAST data), faceted by dimorphism category.
+(B) Proportion of 2,897 reviewed VNC intrinsic type change suggestions by super class, coloured by review outcome: connectivity match better (n=2,239), morphology match better (n=590), or all wrong (n=68). Effector neurons (n=530 reviewed) labelled female-specific in BANC are classified as all wrong because no male-specific MANC types match.
+(C) NBLAST score distributions for morphology-matched versus connectivity-matched type assignments across VNC intrinsic neurons, faceted by dimorphism category. Violin and box plots with Wilcoxon rank-sum test.
+(D) Morphology-match versus connectivity-match NBLAST scores for manually reviewed neurons. Fill indicates review decision; outline indicates dimorphism category. Dashed line marks equality.
+(E) Rank of the connectivity-matched cell type among all same-side MANC NBLAST hits (score > 0), excluding sex-specific types, coloured by dimorphism. Lower rank indicates the connectivity match is also a strong morphological match.
+(F) As (E) but versus maleCNS.
