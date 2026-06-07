@@ -74,6 +74,40 @@ gcs.bucket   <- "gs://lee-lab_brain-and-nerve-cord-fly-connectome/compiled_data"
 cache_dir    <- file.path(.this_repo, "data", "cache")
 dir.create(cache_dir, showWarnings = FALSE, recursive = TRUE)
 
+# ---- Environment / data-source resolution --------------------------------
+# On O2 the large inputs already live on disk under $DATA/connectomes; read
+# them in place (NEVER copy multi-GiB parquets into data/cache). Off O2 (e.g.
+# a laptop) the same files are pulled from GCS and cached to data/cache. This
+# is the only place machine-specific paths live.
+on_o2  <- dir.exists("/n/data1/hms/neurobio/wilson")
+o2_data <- "/n/data1/hms/neurobio/wilson"                       # == $DATA
+o2_connectomes <- file.path(o2_data, "connectomes")
+
+# Per-input registry: logical name -> list(o2 = <local path>, gcs = <gs:// path>).
+.inputs <- list(
+  banc_meta = list(
+    o2  = file.path(o2_connectomes, "banc", banc.version,
+                    sprintf("%s_meta.feather", banc.version)),
+    gcs = sprintf("%s/%s/%s_meta.feather", gcs.bucket, banc.version, banc.version)),
+  banc_synapses = list(
+    o2  = file.path(o2_connectomes, "banc", banc.version,
+                    sprintf("%s_synapses_v2_enriched.parquet", banc.version)),
+    gcs = sprintf("%s/%s/%s_synapses_v2_enriched.parquet",
+                  gcs.bucket, banc.version, banc.version)),
+  manc_meta = list(
+    o2  = file.path(o2_connectomes, "manc", "manc_121_meta.feather"),
+    gcs = sprintf("%s/manc_121/manc_121_meta.feather", gcs.bucket)),
+  manc_synapses = list(
+    o2  = file.path(o2_connectomes, "manc", "manc_121_synapses.parquet"),
+    gcs = sprintf("%s/manc_121/manc_121_synapses.parquet", gcs.bucket))
+)
+
+# Per (dataset x role) synapse cap applied BEFORE the expensive coordinate
+# transform, so draft maps render quickly. DimScore weights are preserved, so
+# the weighted density is an unbiased subsample. Set to Inf / 0 to disable.
+max_syn <- suppressWarnings(as.numeric(Sys.getenv("BANC_DIM_MAXSYN", unset = "200000")))
+if (is.na(max_syn) || max_syn <= 0) max_syn <- Inf
+
 message("### dimorphism-score weighted density maps (VNC) ###")
 t_start <- Sys.time()
 
@@ -86,6 +120,19 @@ syn_cache_dir <- cache_dir
 
 output_dir <- file.path(.this_repo, "figs", "figure_dimorphic", "links", "dim_scores")
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+# Cached point tables (written at the end of the data stage). With
+# BANC_DIM_REPLOT=1 we skip the multi-GiB data pull + coordinate transforms and
+# re-plot straight from these — seconds instead of ~25 min. Useful when only the
+# plotting code changed.
+cache_syn_path   <- file.path(output_dir, "dimscore_synapses_jrcvnc2018u.feather")
+cache_roots_path <- file.path(output_dir, "dimscore_roots_jrcvnc2018u.feather")
+replot_only <- Sys.getenv("BANC_DIM_REPLOT", "0") == "1" &&
+  file.exists(cache_syn_path) && file.exists(cache_roots_path)
+
+# Template surface — needed by both the data stage (point-in-VNC test) and the
+# plot stage (mesh outline), so define it unconditionally.
+jrc_surf <- nat.flybrains::JRCVNC2018U.surf
 
 # ---- 1. Helpers -----------------------------------------------------------
 
@@ -104,6 +151,41 @@ gcs_cache <- function(gcs_path, cache_dir = syn_cache_dir) {
     message(sprintf("  Using cached %s", basename(local_file)))
   }
   local_file
+}
+
+# Resolve a logical input name to a readable local path. On O2 returns the
+# in-place file under $DATA/connectomes (no copy); otherwise downloads + caches
+# the GCS object. Falls back to GCS if the expected O2 file is missing.
+resolve_input <- function(name) {
+  spec <- .inputs[[name]]
+  if (is.null(spec)) stop("Unknown input: ", name)
+  if (on_o2 && file.exists(spec$o2)) {
+    message(sprintf("  [O2 local] %s", spec$o2))
+    return(spec$o2)
+  }
+  if (on_o2)
+    message(sprintf("  [O2] %s missing; falling back to GCS", basename(spec$o2)))
+  gcs_cache(spec$gcs)
+}
+
+# Collect a filtered arrow synapse query, capping at `cap` rows BEFORE pulling
+# into R (the full result can be tens of millions of rows). Subsampling is done
+# server-side via deterministic modulo on the integer-cast string id column, so
+# memory stays bounded and the sample is spatially unbiased (uniform over
+# synapses => DimScore-weighted density is unbiased). Requires `key_col` to be a
+# numeric-as-string id (arrow casts it to int64).
+collect_capped <- function(query, key_col, label, cap = max_syn) {
+  if (is.infinite(cap)) return(dplyr::collect(query))
+  n <- query %>% dplyr::count() %>% dplyr::collect() %>% dplyr::pull(n)
+  if (n <= cap) {
+    message(sprintf("    %s: %d rows (<= cap)", label, n))
+    return(dplyr::collect(query))
+  }
+  k <- as.integer(ceiling(n / cap))
+  message(sprintf("    %s: %d rows -> ~%d (every %dth: int64(%s) %%%% %d == 0)",
+                  label, n, n %/% k, k, key_col, k))
+  mod_expr <- rlang::expr(cast(!!rlang::sym(key_col), int64()) %% !!k == 0L)
+  query %>% dplyr::filter(!!mod_expr) %>% dplyr::collect()
 }
 
 # `open_dataset` is the predicate-pushdown path; fall back to `read_parquet`
@@ -169,10 +251,14 @@ manc_to_jrcvnc2018u <- function(xyz_um) {
 
 # ---- 3a. Load BANC metadata ----------------------------------------------
 
+if (replot_only) {
+  message("\n### Replot mode (BANC_DIM_REPLOT=1): loading cached point tables ###")
+  syn_all   <- arrow::read_feather(cache_syn_path)
+  roots_all <- arrow::read_feather(cache_roots_path)
+} else {
+
 message("\n=== Loading BANC metadata ===")
-banc_meta_file <- gcs_cache(
-  sprintf("%s/%s/%s_meta.feather", gcs.bucket, banc.version, banc.version),
-  cache_dir = cache_dir)
+banc_meta_file <- resolve_input("banc_meta")
 banc.meta <- arrow::read_feather(banc_meta_file) %>%
   dplyr::mutate(across(where(bit64::is.integer64), as.character))
 .id_col <- grep("^banc_[0-9]+_id$", colnames(banc.meta), value = TRUE)
@@ -219,9 +305,8 @@ bc <- banc_scores %>%
 message(sprintf("  BANC scores joined to banc.meta: %d / %d",
                 nrow(bc), nrow(banc_scores)))
 
-# MANC metadata from GCS (manc_121).
-manc_meta_local <- gcs_cache(
-  "gs://lee-lab_brain-and-nerve-cord-fly-connectome/compiled_data/manc_121/manc_121_meta.feather")
+# MANC metadata (manc_121): local on O2, else GCS.
+manc_meta_local <- resolve_input("manc_meta")
 manc.meta <- arrow::read_feather(manc_meta_local) %>%
   dplyr::mutate(manc_id = as.character(manc_121_id))
 
@@ -306,8 +391,8 @@ if (!is.null(manc_roots_df)) {
 # ---- 7. BANC synapses ----------------------------------------------------
 
 message("\n=== BANC synapses ===")
-banc_syn_file <- gcs_cache(
-  "gs://lee-lab_brain-and-nerve-cord-fly-connectome/compiled_data/banc_888/banc_888_synapses_v2_enriched.parquet")
+set.seed(42)  # reproducible subsampling
+banc_syn_file <- resolve_input("banc_synapses")
 
 # Drop neurons that did not survive the join (no v888 root_id available).
 bc_with_888 <- bc %>%
@@ -318,23 +403,25 @@ message(sprintf("  %d BANC neurons with v888 root_id (of %d scored)",
                 length(banc_888_ids), nrow(bc)))
 
 banc_syn_ds <- open_parquet(banc_syn_file)
-banc_pre <- banc_syn_ds %>%
-  dplyr::select(pre_root_id, X, Y, Z) %>%
-  dplyr::filter(pre_root_id %in% banc_888_ids) %>%
-  dplyr::collect() %>%
+banc_pre <- collect_capped(
+  banc_syn_ds %>%
+    dplyr::select(id, pre_root_id, X, Y, Z) %>%
+    dplyr::filter(pre_root_id %in% banc_888_ids),
+  key_col = "id", label = "BANC pre") %>%
   dplyr::inner_join(bc_with_888 %>% dplyr::select(root_id, DimScore, super_class),
                     by = c("pre_root_id" = "root_id"))
 gc()
-message(sprintf("  presynapses from scored BANC neurons: %d", nrow(banc_pre)))
+message(sprintf("  presynapses from scored BANC neurons (collected): %d", nrow(banc_pre)))
 
-banc_post <- banc_syn_ds %>%
-  dplyr::select(post_root_id, X, Y, Z) %>%
-  dplyr::filter(post_root_id %in% banc_888_ids) %>%
-  dplyr::collect() %>%
+banc_post <- collect_capped(
+  banc_syn_ds %>%
+    dplyr::select(id, post_root_id, X, Y, Z) %>%
+    dplyr::filter(post_root_id %in% banc_888_ids),
+  key_col = "id", label = "BANC post") %>%
   dplyr::inner_join(bc_with_888 %>% dplyr::select(root_id, DimScore, super_class),
                     by = c("post_root_id" = "root_id"))
 gc()
-message(sprintf("  postsynapses to scored BANC neurons: %d", nrow(banc_post)))
+message(sprintf("  postsynapses to scored BANC neurons (collected): %d", nrow(banc_post)))
 
 # Transform + restrict to JRCVNC2018U volume.
 jrc_surf <- nat.flybrains::JRCVNC2018U.surf
@@ -363,28 +450,29 @@ rm(banc_pre, banc_post); gc()
 # ---- 8. MANC synapses ----------------------------------------------------
 
 message("\n=== MANC synapses ===")
-manc_syn_file <- gcs_cache(
-  "gs://lee-lab_brain-and-nerve-cord-fly-connectome/compiled_data/manc_121/manc_121_synapses.parquet")
+manc_syn_file <- resolve_input("manc_synapses")
 manc_syn_ds <- open_parquet(manc_syn_file)
 manc_ids_str <- as.character(mc$manc_id)
 
-manc_pre <- manc_syn_ds %>%
-  dplyr::filter(prepost == 0L, pre %in% manc_ids_str) %>%
-  dplyr::select(pre, x, y, z) %>%
-  dplyr::collect() %>%
+manc_pre <- collect_capped(
+  manc_syn_ds %>%
+    dplyr::filter(prepost == 0L, pre %in% manc_ids_str) %>%
+    dplyr::select(connector_id, pre, x, y, z),
+  key_col = "connector_id", label = "MANC pre") %>%
   dplyr::inner_join(mc %>% dplyr::select(manc_id, DimScore, super_class),
                     by = c("pre" = "manc_id"))
 gc()
-message(sprintf("  presynapses from scored MANC neurons: %d", nrow(manc_pre)))
+message(sprintf("  presynapses from scored MANC neurons (collected): %d", nrow(manc_pre)))
 
-manc_post <- manc_syn_ds %>%
-  dplyr::filter(prepost == 1L, post %in% manc_ids_str) %>%
-  dplyr::select(post, x, y, z) %>%
-  dplyr::collect() %>%
+manc_post <- collect_capped(
+  manc_syn_ds %>%
+    dplyr::filter(prepost == 1L, post %in% manc_ids_str) %>%
+    dplyr::select(connector_id, post, x, y, z),
+  key_col = "connector_id", label = "MANC post") %>%
   dplyr::inner_join(mc %>% dplyr::select(manc_id, DimScore, super_class),
                     by = c("post" = "manc_id"))
 gc()
-message(sprintf("  postsynapses to scored MANC neurons: %d", nrow(manc_post)))
+message(sprintf("  postsynapses to scored MANC neurons (collected): %d", nrow(manc_post)))
 
 manc_pre_in <- (function() {
   if (!nrow(manc_pre)) return(NULL)
@@ -448,6 +536,14 @@ arrow::write_feather(roots_all,
 message(sprintf("  %d root points within JRCVNC2018U (BANC + MANC)",
                 nrow(roots_all)))
 
+}  # end if(!replot_only)
+
+# Ensure consistent factor levels regardless of branch (read_feather can return
+# these columns as plain character).
+syn_all$dataset   <- factor(syn_all$dataset, levels = c("BANC", "MANC"))
+syn_all$role      <- factor(syn_all$role,    levels = c("pre", "post"))
+roots_all$dataset <- factor(roots_all$dataset, levels = c("BANC", "MANC"))
+
 # ---- 10. Plot helpers ----------------------------------------------------
 
 template_2d_vnc  <- nat.ggplot::ggplot2_neuron_path(
@@ -474,12 +570,26 @@ plot_weighted_density <- function(df, rotation_matrix, template_2d) {
                      dataset  = df$dataset,
                      role     = df$role)
 
+  # stat_density_2d_filled silently DROPS the `weight` aesthetic (its MASS::kde2d
+  # backend is unweighted), so passing weight = DimScore would just give a raw
+  # synapse-count density. To get a genuine DimScore-weighted density we instead
+  # resample points within each facet with probability proportional to DimScore,
+  # then estimate an ordinary (unweighted) KDE on that resample.
+  pts <- do.call(rbind, lapply(
+    split(pts, list(pts$dataset, pts$role), drop = TRUE),
+    function(d) {
+      if (nrow(d) < 10) return(d)
+      w <- pmax(d$DimScore, 0)
+      if (sum(w) <= 0) return(d)
+      d[sample.int(nrow(d), nrow(d), replace = TRUE, prob = w), , drop = FALSE]
+    }))
+
   ggplot() +
     geom_polygon(data = template_all,
                  aes(x = X, y = Y, group = group),
                  fill = "grey80", colour = NA, alpha = 0.1) +
     stat_density_2d_filled(data = pts,
-                            aes(x = px, y = py, weight = DimScore),
+                            aes(x = px, y = py),
                             h = c(5, 5), bins = 20, n = 200,
                             contour_var = "ndensity",
                             breaks = seq(0.001, 1, length.out = 20),

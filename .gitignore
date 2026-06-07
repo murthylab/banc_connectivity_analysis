@@ -207,3 +207,10 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 /data/cache
+
+# Local working notes (Claude)
+tasks.md
+CLAUDE.md
+
+# Cached point tables for dim-score density (regenerate via BANC_DIM_REPLOT)
+figs/**/dim_scores/*.feather
