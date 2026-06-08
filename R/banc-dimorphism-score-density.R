@@ -26,6 +26,7 @@
 #'
 #' @section Writes:
 #'   * figs/figure_dimorphic/links/dim_scores/<prefix>_<view>.pdf
+#'   * figs/figure_dimorphic/links/dim_scores/dimscore_synapses_weighted.txt (plain-language legend)
 #'   * figs/figure_dimorphic/links/dim_scores/dimscore_*_jrcvnc2018u.feather (cached point tables)
 #'
 #' @section Paper:
@@ -546,57 +547,134 @@ roots_all$dataset <- factor(roots_all$dataset, levels = c("BANC", "MANC"))
 
 # ---- 10. Plot helpers ----------------------------------------------------
 
+# Projected mesh triangles (one group per face) for the VNC neuropil surface.
+# Rendered as a *solid filled silhouette* (fill == stroke colour, hairline width)
+# so adjacent triangles merge into one clean shape with no visible wireframe —
+# the previous per-triangle stroke read as a wire mesh.
 template_2d_vnc  <- nat.ggplot::ggplot2_neuron_path(
   rgl::as.mesh3d(jrc_surf), rotation_matrix = jrc_vnc_mat)
 template_2d_side <- nat.ggplot::ggplot2_neuron_path(
   rgl::as.mesh3d(jrc_surf), rotation_matrix = jrc_vnc_side_mat)
 
-# Weighted-density panel: one facet per dataset × {pre, post}, weighted by DimScore.
-plot_weighted_density <- function(df, rotation_matrix, template_2d) {
+# Replicate the projected surface across facets (group offset keeps polygons
+# from bleeding between panels). `facet_cols` is a named list of factor columns
+# to attach (e.g. list(dataset=..., role=...)).
+template_per_facet <- function(template_2d, facets) {
+  facets <- as.data.frame(facets, stringsAsFactors = FALSE)
+  base_max <- max(template_2d$group, na.rm = TRUE)
+  do.call(rbind, lapply(seq_len(nrow(facets)), function(i) {
+    d <- template_2d
+    for (nm in names(facets)) d[[nm]] <- facets[[nm]][i]
+    d$group <- d$group + (i - 1) * base_max
+    d
+  }))
+}
+
+# Clean silhouette layer: fill and stroke share a colour so the triangulation
+# disappears, leaving a single smooth neuropil outline.
+geom_surface <- function(template_all, fill = "grey92") {
+  geom_polygon(data = template_all,
+               aes(x = X, y = Y, group = group),
+               fill = fill, colour = fill, linewidth = 0.05)
+}
+
+# Row-normalised 1D Gaussian smoothing matrix: n bins of width `bw` (µm),
+# bandwidth `sigma` (µm). Edges handled by truncation (rows renormalised).
+gauss_smooth_mat <- function(n, bw, sigma) {
+  idx <- seq_len(n)
+  W <- exp(-(outer(idx, idx, "-") * bw)^2 / (2 * sigma^2))
+  W / rowSums(W)
+}
+
+# Build a 1D bin grid covering `vals` at resolution `bw` (µm).
+make_grid <- function(vals, bw) {
+  lo <- min(vals); hi <- max(vals)
+  n  <- max(1L, as.integer(ceiling((hi - lo) / bw)))
+  edges <- lo + (0:n) * bw
+  list(n = n, edges = edges, centers = edges[-1] - bw / 2, bw = bw)
+}
+
+# Depth max-intensity projection (MIP) of a DimScore-weighted point cloud.
+# Points are binned into a 3D grid (display-x, display-y, depth) with DimScore
+# as the weight, smoothed with a separable 3D Gaussian, then the MAXIMUM along
+# the depth axis is taken for each (x, y) pixel. This surfaces depth-localised
+# hotspots (e.g. a single neuropil layer) that a flat through-depth sum would
+# bury under thicker, busier regions. Returns a long data.frame (px, py, value)
+# with value normalised to [0, 1]; bins below `thr` are set NA (transparent).
+mip_density <- function(px, py, depth, w, gx, gy, gz, Wx, Wy, Wz, thr = 0.03) {
+  ix <- findInterval(px,    gx$edges, rightmost.closed = TRUE)
+  iy <- findInterval(py,    gy$edges, rightmost.closed = TRUE)
+  iz <- findInterval(depth, gz$edges, rightmost.closed = TRUE)
+  ok <- ix >= 1 & ix <= gx$n & iy >= 1 & iy <= gy$n & iz >= 1 & iz <= gz$n
+  A  <- array(0, dim = c(gx$n, gy$n, gz$n))
+  if (any(ok)) {
+    lin <- ix[ok] + (iy[ok] - 1) * gx$n + (iz[ok] - 1) * gx$n * gy$n
+    rs  <- rowsum(pmax(w[ok], 0), group = lin)          # fast weighted accumulate
+    A[as.integer(rownames(rs))] <- rs[, 1]
+  }
+  nx <- gx$n; ny <- gy$n; nz <- gz$n
+  # Separable Gaussian smoothing, one axis at a time, via matrix products.
+  A <- array(Wx %*% matrix(A, nrow = nx), dim = c(nx, ny, nz))
+  A <- aperm(A, c(2, 1, 3))
+  A <- array(Wy %*% matrix(A, nrow = ny), dim = c(ny, nx, nz))
+  A <- aperm(A, c(2, 1, 3))
+  A <- aperm(A, c(3, 1, 2))
+  A <- array(Wz %*% matrix(A, nrow = nz), dim = c(nz, nx, ny))
+  A <- aperm(A, c(2, 3, 1))
+  M <- apply(A, c(1, 2), max)                            # max-intensity projection
+  mx <- max(M, na.rm = TRUE)
+  if (is.finite(mx) && mx > 0) M <- M / mx               # per-panel ndensity 0..1
+  out <- expand.grid(px = gx$centers, py = gy$centers)
+  out$value <- as.vector(M)
+  out$value[out$value < thr] <- NA_real_
+  out
+}
+
+# Density panel: one facet per dataset × {pre, post}. Each panel is a DimScore-
+# weighted depth max-intensity projection (see mip_density), rendered as a raster
+# over the clean neuropil silhouette.
+plot_weighted_density <- function(df, rotation_matrix, template_2d,
+                                  bw = 2.5, sigma = 5) {
   facets <- expand.grid(role = levels(df$role),
                          dataset = levels(df$dataset),
                          stringsAsFactors = FALSE)
-  template_all <- do.call(rbind, lapply(seq_len(nrow(facets)), function(i) {
-    d <- template_2d
-    d$role    <- factor(facets$role[i],    levels = levels(df$role))
-    d$dataset <- factor(facets$dataset[i], levels = levels(df$dataset))
-    d$group <- d$group + (i - 1) * max(template_2d$group, na.rm = TRUE)
-    d
-  }))
+  template_all <- template_per_facet(template_2d, list(
+    role    = factor(facets$role,    levels = levels(df$role)),
+    dataset = factor(facets$dataset, levels = levels(df$dataset))))
 
   proj <- project_points(df[, c("X", "Y", "Z")], rotation_matrix)
-  pts <- data.frame(px = proj$X, py = proj$Y,
-                     DimScore = df$DimScore,
-                     dataset  = df$dataset,
-                     role     = df$role)
+  tproj <- project_points(template_2d[, c("X", "Y", "Z")], rotation_matrix)
 
-  # stat_density_2d_filled silently DROPS the `weight` aesthetic (its MASS::kde2d
-  # backend is unweighted), so passing weight = DimScore would just give a raw
-  # synapse-count density. To get a genuine DimScore-weighted density we instead
-  # resample points within each facet with probability proportional to DimScore,
-  # then estimate an ordinary (unweighted) KDE on that resample.
-  pts <- do.call(rbind, lapply(
+  # Common (px, py) grid across panels (spans points + silhouette so the raster
+  # registers with the surface); shared depth grid for the projection axis.
+  gx <- make_grid(c(proj$X, tproj$X), bw)
+  gy <- make_grid(c(proj$Y, tproj$Y), bw)
+  gz <- make_grid(proj$Z, bw)
+  Wx <- gauss_smooth_mat(gx$n, bw, sigma)
+  Wy <- gauss_smooth_mat(gy$n, bw, sigma)
+  Wz <- gauss_smooth_mat(gz$n, bw, sigma)
+
+  pts <- data.frame(px = proj$X, py = proj$Y, depth = proj$Z,
+                     DimScore = df$DimScore,
+                     dataset = df$dataset, role = df$role)
+  rast <- do.call(rbind, lapply(
     split(pts, list(pts$dataset, pts$role), drop = TRUE),
     function(d) {
-      if (nrow(d) < 10) return(d)
-      w <- pmax(d$DimScore, 0)
-      if (sum(w) <= 0) return(d)
-      d[sample.int(nrow(d), nrow(d), replace = TRUE, prob = w), , drop = FALSE]
+      if (nrow(d) < 10) return(NULL)
+      m <- mip_density(d$px, d$py, d$depth, d$DimScore, gx, gy, gz, Wx, Wy, Wz)
+      m <- m[!is.na(m$value), , drop = FALSE]
+      if (!nrow(m)) return(NULL)
+      m$dataset <- factor(d$dataset[1], levels = levels(df$dataset))
+      m$role    <- factor(d$role[1],    levels = levels(df$role))
+      m
     }))
 
   ggplot() +
-    geom_polygon(data = template_all,
-                 aes(x = X, y = Y, group = group),
-                 fill = "grey80", colour = NA, alpha = 0.1) +
-    stat_density_2d_filled(data = pts,
-                            aes(x = px, y = py),
-                            h = c(5, 5), bins = 20, n = 200,
-                            contour_var = "ndensity",
-                            breaks = seq(0.001, 1, length.out = 20),
-                            alpha = 0.85) +
-    scale_fill_viridis_d(option = "magma",
-                          name = "DimScore-\nweighted density",
-                          guide = guide_legend(override.aes = list(alpha = 1))) +
+    geom_surface(template_all, fill = "grey92") +
+    geom_raster(data = rast, aes(x = px, y = py, fill = value),
+                interpolate = TRUE) +
+    scale_fill_viridis_c(option = "magma", na.value = "transparent",
+                         name = "DimScore-weighted\ndensity\n(depth max-proj,\nper-panel 0–1)") +
     facet_grid(dataset ~ role) +
     coord_fixed(clip = "off") +
     theme_void() +
@@ -607,13 +685,8 @@ plot_weighted_density <- function(df, rotation_matrix, template_2d) {
 
 # Root scatter panel: one facet per dataset, points sized + coloured by DimScore.
 plot_roots <- function(df, rotation_matrix, template_2d) {
-  facets <- data.frame(dataset = levels(df$dataset), stringsAsFactors = FALSE)
-  template_all <- do.call(rbind, lapply(seq_len(nrow(facets)), function(i) {
-    d <- template_2d
-    d$dataset <- factor(facets$dataset[i], levels = levels(df$dataset))
-    d$group <- d$group + (i - 1) * max(template_2d$group, na.rm = TRUE)
-    d
-  }))
+  template_all <- template_per_facet(template_2d, list(
+    dataset = factor(levels(df$dataset), levels = levels(df$dataset))))
 
   proj <- project_points(df[, c("X", "Y", "Z")], rotation_matrix)
   pts <- data.frame(px = proj$X, py = proj$Y,
@@ -623,10 +696,7 @@ plot_roots <- function(df, rotation_matrix, template_2d) {
   pts <- pts[order(pts$DimScore), , drop = FALSE]
 
   ggplot() +
-    geom_polygon(data = template_all,
-                 aes(x = X, y = Y, group = group),
-                 fill = "grey90", colour = "grey70",
-                 linewidth = 0.3, alpha = 0.4) +
+    geom_surface(template_all, fill = "grey90") +
     geom_point(data = pts,
                 aes(x = px, y = py, colour = DimScore, size = DimScore),
                 alpha = 0.7) +
@@ -642,6 +712,59 @@ plot_roots <- function(df, rotation_matrix, template_2d) {
           legend.position = "right")
 }
 
+# ---- 10b. Figure legend (synapse panel) ----------------------------------
+# Plain-language caption written alongside the synapse figure so reviewers can
+# read it without the script. Kept here (not a static file) so it always tracks
+# the current method.
+write_synapse_legend <- function(path) {
+  writeLines(c(
+"Dimorphism-score-weighted synaptic density across the ventral nerve cord (VNC)",
+"==============================================================================",
+"",
+"Files: dimscore_synapses_weighted_vnc.{png,pdf}        (dorsal / top-down view)",
+"       dimscore_synapses_weighted_vnc_side.{png,pdf}   (lateral / side view)",
+"",
+"What the figure shows",
+"---------------------",
+"Where in the VNC the synapses of sexually dimorphic neurons are concentrated.",
+"Every synapse is weighted by its neuron's dimorphism score (DimScore): a higher",
+"score means the neuron differs more between the male and female nerve cord, so",
+"bright regions are places rich in strongly dimorphic synapses. Brightness is",
+"NOT a raw synapse count.",
+"",
+"Layout: four panels.",
+"  Rows    - dataset: BANC (top) and MANC (bottom).",
+"  Columns - synapse side: 'pre' (outputs, where the neuron talks to others)",
+"            and 'post' (inputs, where it is talked to).",
+"All synapses are warped into a common template nerve cord (JRCVNC2018U) so the",
+"two datasets sit in the same anatomical space and can be compared panel to panel.",
+"",
+"How depth is handled (maximum-intensity projection)",
+"---------------------------------------------------",
+"The nerve cord is 3D but the figure is 2D. For each pixel we look straight",
+"through the full depth of the cord and keep the single brightest value along",
+"that line of sight (a maximum-intensity projection, as in confocal microscopy).",
+"Nothing is hidden behind a front surface, and a hotspot confined to one layer",
+"(e.g. a wing-related region) stays visible instead of being averaged out by the",
+"thicker, busier leg regions in front of or behind it.",
+"",
+"Colour scale",
+"------------",
+"Magma colour = relative density, scaled independently within each panel from 0",
+"(dark / transparent) to 1 (bright). Because each panel is scaled to its own",
+"maximum, colours show WHERE the dimorphic synapses sit within a panel, not how",
+"the four panels compare in absolute magnitude.",
+"",
+"Caveats",
+"-------",
+"- Draft: synapses are sub-sampled per panel for speed (see BANC_DIM_MAXSYN);",
+"  the weighting keeps the sample unbiased but final figures should raise the cap.",
+"- Grey shape = the template VNC neuropil surface, for spatial reference only.",
+"",
+"Source: R/banc-dimorphism-score-density.R (murthylab/banc_connectivity_analysis)."),
+    con = path)
+}
+
 # ---- 11. Plots -----------------------------------------------------------
 
 message("\n=== Plotting ===")
@@ -650,19 +773,24 @@ for (view in c("vnc", "vnc_side")) {
   tmpl    <- if (view == "vnc") template_2d_vnc else template_2d_side
 
   if (nrow(syn_all) > 0) {
-    fname <- sprintf("dimscore_synapses_weighted_%s.pdf", view)
-    message(sprintf("  Plotting %s ...", fname))
+    stem <- sprintf("dimscore_synapses_weighted_%s", view)
+    message(sprintf("  Plotting %s ...", stem))
     g <- plot_weighted_density(syn_all, rot_mat, tmpl)
-    ggsave(file.path(output_dir, fname), g,
+    ggsave(file.path(output_dir, paste0(stem, ".pdf")), g,
            width = 12, height = 12, dpi = 300, bg = "white")
+    ggsave(file.path(output_dir, paste0(stem, ".png")), g,
+           width = 12, height = 12, dpi = 200, bg = "white")
+    write_synapse_legend(file.path(output_dir, "dimscore_synapses_weighted.txt"))
   }
 
   if (nrow(roots_all) > 0) {
-    fname <- sprintf("dimscore_roots_%s.pdf", view)
-    message(sprintf("  Plotting %s ...", fname))
+    stem <- sprintf("dimscore_roots_%s", view)
+    message(sprintf("  Plotting %s ...", stem))
     g <- plot_roots(roots_all, rot_mat, tmpl)
-    ggsave(file.path(output_dir, fname), g,
+    ggsave(file.path(output_dir, paste0(stem, ".pdf")), g,
            width = 12, height = 8, dpi = 300, bg = "white")
+    ggsave(file.path(output_dir, paste0(stem, ".png")), g,
+           width = 12, height = 8, dpi = 200, bg = "white")
   }
 }
 

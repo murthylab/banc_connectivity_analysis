@@ -1,0 +1,44 @@
+Dimorphism-score-weighted synaptic density across the ventral nerve cord (VNC)
+==============================================================================
+
+Files: dimscore_synapses_weighted_vnc.{png,pdf}        (dorsal / top-down view)
+       dimscore_synapses_weighted_vnc_side.{png,pdf}   (lateral / side view)
+
+What the figure shows
+---------------------
+Where in the VNC the synapses of sexually dimorphic neurons are concentrated.
+Every synapse is weighted by its neuron's dimorphism score (DimScore): a higher
+score means the neuron differs more between the male and female nerve cord, so
+bright regions are places rich in strongly dimorphic synapses. Brightness is
+NOT a raw synapse count.
+
+Layout: four panels.
+  Rows    - dataset: BANC (top) and MANC (bottom).
+  Columns - synapse side: 'pre' (outputs, where the neuron talks to others)
+            and 'post' (inputs, where it is talked to).
+All synapses are warped into a common template nerve cord (JRCVNC2018U) so the
+two datasets sit in the same anatomical space and can be compared panel to panel.
+
+How depth is handled (maximum-intensity projection)
+---------------------------------------------------
+The nerve cord is 3D but the figure is 2D. For each pixel we look straight
+through the full depth of the cord and keep the single brightest value along
+that line of sight (a maximum-intensity projection, as in confocal microscopy).
+Nothing is hidden behind a front surface, and a hotspot confined to one layer
+(e.g. a wing-related region) stays visible instead of being averaged out by the
+thicker, busier leg regions in front of or behind it.
+
+Colour scale
+------------
+Magma colour = relative density, scaled independently within each panel from 0
+(dark / transparent) to 1 (bright). Because each panel is scaled to its own
+maximum, colours show WHERE the dimorphic synapses sit within a panel, not how
+the four panels compare in absolute magnitude.
+
+Caveats
+-------
+- Draft: synapses are sub-sampled per panel for speed (see BANC_DIM_MAXSYN);
+  the weighting keeps the sample unbiased but final figures should raise the cap.
+- Grey shape = the template VNC neuropil surface, for spatial reference only.
+
+Source: R/banc-dimorphism-score-density.R (murthylab/banc_connectivity_analysis).
