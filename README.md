@@ -1,31 +1,7 @@
-# BANC connectivity analysis paper resources
+# BANC connectivity alignment and VNC dimorphisms analysis
 
 Repository for data, code, figures, and manuscript assets for
-["Effective Connectome Alignment For Cell Typing and Identifying Sex
-Differences."](https://docs.google.com/document/d/1MUOX8YmrFuuWjsmmGci5Kq9HxQTjkg0KoB2Pt4m_6Xo/edit?tab=t.0)
-
-## Repository structure
-
-```
-R/
-  startup.R                                  — data loading from GCS + SeaTable
-  panels-vnc-dimorphic-influence.R           — sensory → dimorphic influence heatmaps
-  panels-vnc-morphology-connectivity-types.R — VNC type agreement & NBLAST panels
-  banc-dimorphic-density.R                   — synapse density maps (VNC + brain)
-  banc-vnc-type-changes.R                    — VNC type change CSVs + summary
-  banc-vnc-type-review-images.R              — comparison PNGs for type-change review
-settings/
-  paper_colours_lacroix.csv                  — shared colour palette
-data/
-  banc/                                      — BANC-specific data & influence cache
-  manc/, mcns/                               — cell inventory CSVs per dataset
-  codex/                                     — drop-in inputs for type-changes script
-  cache/                                     — GCS download cache (auto-created)
-figs/
-  figure_typing/                             — cell typing panels (.ai + linked PDFs)
-  figure_dimorphic/                          — sexual dimorphism panels + density maps
-    links/                                   — generated PDFs/PNGs
-```
+["Uncovering Sex Differences in the Drosophila Ventral Nerve Cord Through Connectome Alignment"](https://docs.google.com/document/d/1MUOX8YmrFuuWjsmmGci5Kq9HxQTjkg0KoB2Pt4m_6Xo/edit?tab=t.0)
 
 ## Analysis scripts
 
