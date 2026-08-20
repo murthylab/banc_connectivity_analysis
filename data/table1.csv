@@ -9,9 +9,9 @@ AN08B020,Male Specific,<TODO>
 AN08B031,Dimorphic,<TODO>
 AN08B035,Male Specific,<TODO>
 AN08B043,Dimorphic,<TODO>
-AN08B047,Xxx Specific,<TODO>
+AN08B047,Male Specific,<TODO>
 AN08B059,Xxx Specific,<TODO>
-AN08B061,Xxx Specific,<TODO>
+AN08B061,Male Specific,<TODO>
 AN08B069,Dimorphic,<TODO>
 AN08B084,Male Specific,<TODO>
 AN09B012,Dimorphic,<TODO>
@@ -43,7 +43,7 @@ DNxl074,Dimorphic,<TODO>
 DNxl093,Dimorphic,<TODO>
 DNxl094,Dimorphic,<TODO>
 DNxl103,Dimorphic,<TODO>
-IN00A013,Male Specific,New
+IN00A013,Xxx Specific,New
 IN00A021,Male Specific,New
 IN00A023,Male Specific,New
 IN00A027,Dimorphic,New
@@ -61,8 +61,8 @@ IN01A051,Dimorphic,New
 IN01A084,Dimorphic,New
 IN01B014,Male Specific,New
 IN01B058,Male Specific,New
-IN01B088,Xxx Specific,New
-IN02A006,Male Specific,New
+IN01B088,Male Specific,New
+IN02A006,Xxx Specific,New
 IN02A024,Dimorphic,New
 IN02A039,Dimorphic,New
 IN03A015,Dimorphic,New
@@ -132,7 +132,7 @@ IN10B002,Male Specific,New
 IN10B010,Male Specific,New
 IN10B013,Male Specific,New
 IN10B025,Male Specific,New
-IN10B061,Male Specific,New
+IN10B061,Xxx Specific,New
 IN11A002,Male Specific,New
 IN11A004,Male Specific,New
 IN11A006,Male Specific,New
@@ -140,7 +140,7 @@ IN11A045,Male Specific,New
 IN11B004,Dimorphic,New
 IN12A009,Dimorphic,New
 IN12A016,Male Specific,New
-IN12A019,Male Specific,New
+IN12A019,Xxx Specific,New
 IN12A021,Dimorphic,New
 IN12A024,Dimorphic,New
 IN12A025,Male Specific,New
@@ -165,8 +165,8 @@ IN12B046,Male Specific,New
 IN12B050,Male Specific,New
 IN12B051,Male Specific,New
 IN12B054,Male Specific,New
-IN12B060,Xxx Specific,New
-IN12B085,Male Specific,New
+IN12B060,Male Specific,New
+IN12B085,Xxx Specific,New
 IN12B091,Male Specific,New
 IN12B092,Male Specific,New
 IN13A019,Dimorphic,New
@@ -293,7 +293,7 @@ INXXX225,Dimorphic,New
 INXXX228,Dimorphic,New
 INXXX237,Male Specific,New
 INXXX240,Dimorphic,New
-INXXX242,Male Specific,New
+INXXX242,Xxx Specific,New
 INXXX243,Dimorphic,New
 INXXX244,Dimorphic,New
 INXXX246,Male Specific,New
@@ -347,7 +347,7 @@ INXXX377,Dimorphic,New
 INXXX378,Dimorphic,New
 INXXX379,Dimorphic,New
 INXXX382,Dimorphic,New
-INXXX387,Male Specific,New
+INXXX387,Xxx Specific,New
 INXXX391,Dimorphic,New
 INXXX392,Male Specific,New
 INXXX394,Dimorphic,New
@@ -382,6 +382,7 @@ INXXX456,Male Specific,New
 INXXX457,Male Specific,New
 INXXX458,Dimorphic,New
 INXXX459,Dimorphic,New
+INXXX807_f,Female Specific,New
 INXXX808_f,Female Specific,New
 INXXX809_f,Female Specific,New
 INXXX810_f,Female Specific,New
