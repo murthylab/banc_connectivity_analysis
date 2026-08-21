@@ -1,591 +1,591 @@
-Cell Type,Category,Reference
-AN00A006,Dimorphic,<TODO>
-AN03A008,Male Specific,<TODO>
-AN05B035,Male Specific,<TODO>
-AN05B095,Male Specific,<TODO>
-AN06B004,Male Specific,<TODO>
-AN08B009,Xxx Specific,<TODO>
-AN08B020,Male Specific,<TODO>
-AN08B031,Dimorphic,<TODO>
-AN08B035,Male Specific,<TODO>
-AN08B043,Dimorphic,<TODO>
-AN08B047,Male Specific,<TODO>
-AN08B059,Xxx Specific,<TODO>
-AN08B061,Male Specific,<TODO>
-AN08B069,Dimorphic,<TODO>
-AN08B084,Male Specific,<TODO>
-AN09B012,Dimorphic,<TODO>
-AN09B017,Male Specific,<TODO>
-AN09B028,Dimorphic,<TODO>
-AN10B026,Male Specific,<TODO>
-AN12B060,Dimorphic,<TODO>
-AN12B089,Dimorphic,<TODO>
-AN18B053,Dimorphic,<TODO>
-AN19A018,Xxx Specific,<TODO>
-AN19B024,Xxx Specific,<TODO>
-AN19B104,Dimorphic,<TODO>
-AN23B026,Male Specific,<TODO>
-AN27X003,Xxx Specific,<TODO>
-AN27X019,Male Specific,<TODO>
-ANXXX050,Male Specific,<TODO>
-ANXXX068,Male Specific,<TODO>
-ANXXX071,Male Specific,<TODO>
-ANXXX084,Dimorphic,<TODO>
-ANXXX116,Dimorphic,<TODO>
-ANXXX150,Xxx Specific,<TODO>
-ANXXX152,Male Specific,<TODO>
-ANXXX254,Dimorphic,<TODO>
-DNa08,Dimorphic,<TODO>
-DNp48,Dimorphic,<TODO>
-DNut044,Male Specific,<TODO>
-DNxl053,Male Specific,<TODO>
-DNxl074,Dimorphic,<TODO>
-DNxl093,Dimorphic,<TODO>
-DNxl094,Dimorphic,<TODO>
-DNxl103,Dimorphic,<TODO>
-IN00A013,Xxx Specific,New
-IN00A021,Male Specific,New
-IN00A023,Male Specific,New
-IN00A027,Dimorphic,New
-IN00A068,Male Specific,New
-IN00A069,Male Specific,New
-IN00A070,Male Specific,New
-IN00A071,Male Specific,New
-IN01A013,Male Specific,New
-IN01A029,Dimorphic,New
-IN01A037,Dimorphic,New
-IN01A040,Male Specific,New
-IN01A041,Male Specific,New
-IN01A043,Dimorphic,New
-IN01A051,Dimorphic,New
-IN01A084,Dimorphic,New
-IN01B014,Male Specific,New
-IN01B058,Male Specific,New
-IN01B088,Male Specific,New
-IN02A006,Xxx Specific,New
-IN02A024,Dimorphic,New
-IN02A039,Dimorphic,New
-IN03A015,Dimorphic,New
-IN03A097,Dimorphic,New
-IN03B024,Dimorphic,New
-IN03B029,Male Specific,New
-IN04B009,Male Specific,New
-IN04B010,Male Specific,New
-IN04B012,Male Specific,New
-IN04B013,Male Specific,New
-IN04B016,Male Specific,New
-IN04B017,Male Specific,New
-IN04B018,Male Specific,New
-IN04B021,Dimorphic,New
-IN04B024,Male Specific,New
-IN04B026,Dimorphic,New
-IN04B030,Male Specific,New
-IN04B032,Dimorphic,New
-IN04B040,Male Specific,New
-IN04B048,Male Specific,New
-IN04B060,Male Specific,New
-IN04B065,Male Specific,New
-IN04B076,Male Specific,New
-IN04B077,Male Specific,New
-IN04B079,Male Specific,New
-IN05B008,Male Specific,New
-IN05B014,Male Specific,New
-IN05B034,Dimorphic,New
-IN05B066,Dimorphic,New
-IN05B073,Dimorphic,New
-IN05B074,Male Specific,New
-IN05B084,Male Specific,New
-IN05B093,Dimorphic,New
-IN06A024,Dimorphic,New
-IN06A025,Dimorphic,New
-IN06A049,Male Specific,New
-IN06A064,Dimorphic,New
-IN06A098,Dimorphic,New
-IN06A105,Dimorphic,New
-IN06A119,Dimorphic,New
-IN06A120,Dimorphic,New
-IN06A121,Dimorphic,New
-IN06A130,Dimorphic,New
-IN06A131,Male Specific,New
-IN06B020,Dimorphic,New
-IN06B049,Dimorphic,New
-IN07B061,Dimorphic,New
-IN07B090,Dimorphic,New
-IN08A003,Dimorphic,New
-IN08B003,Xxx Specific,New
-IN08B029,Male Specific,New
-IN08B033,Male Specific,New
-IN08B038,Male Specific,New
-IN08B040,Male Specific,New
-IN08B042,Male Specific,New
-IN08B044,Male Specific,New
-IN08B045,Male Specific,New
-IN08B046,Male Specific,New
-IN08B055,Male Specific,New
-IN08B062,Male Specific,New
-IN08B063,Male Specific,New
-IN08B077,Male Specific,New
-IN09B052,Dimorphic,New
-IN09B056,Male Specific,New
-IN10B001,Male Specific,New
-IN10B002,Male Specific,New
-IN10B010,Male Specific,New
-IN10B013,Male Specific,New
-IN10B025,Male Specific,New
-IN10B061,Xxx Specific,New
-IN11A002,Male Specific,New
-IN11A004,Male Specific,New
-IN11A006,Male Specific,New
-IN11A045,Male Specific,New
-IN11B004,Dimorphic,New
-IN12A009,Dimorphic,New
-IN12A016,Male Specific,New
-IN12A019,Xxx Specific,New
-IN12A021,Dimorphic,New
-IN12A024,Dimorphic,New
-IN12A025,Male Specific,New
-IN12A027,Male Specific,New
-IN12A029,Male Specific,New
-IN12A030,Male Specific,New
-IN12A031,Male Specific,New
-IN12A037,Male Specific,New
-IN12A041,Male Specific,New
-IN12A042,Male Specific,New
-IN12A047,Male Specific,New
-IN12A055,Male Specific,New
-IN12A056,Male Specific,New
-IN12A064,Male Specific,New
-IN12B009,Male Specific,New
-IN12B010,Male Specific,New
-IN12B020,Male Specific,New
-IN12B021,Male Specific,New
-IN12B028,Male Specific,New
-IN12B045,Male Specific,New
-IN12B046,Male Specific,New
-IN12B050,Male Specific,New
-IN12B051,Male Specific,New
-IN12B054,Male Specific,New
-IN12B060,Male Specific,New
-IN12B085,Xxx Specific,New
-IN12B091,Male Specific,New
-IN12B092,Male Specific,New
-IN13A019,Dimorphic,New
-IN13A066,Male Specific,New
-IN13A070,Male Specific,New
-IN13A073,Male Specific,New
-IN13B101,Male Specific,New
-IN14A016,Dimorphic,New
-IN14A027,Male Specific,New
-IN14A029,Male Specific,New
-IN14A122,Male Specific,New
-IN14A124,Male Specific,New
-IN14B003,Dimorphic,New
-IN14B008,Dimorphic,New
-IN14B014,Male Specific,New
-IN16B049,Dimorphic,New
-IN17A037,Male Specific,New
-IN17A051,Male Specific,New
-IN17A053,Male Specific,New
-IN17A066,Male Specific,New
-IN17A087,Dimorphic,New
-IN17A092,Male Specific,New
-IN17A094,Dimorphic,New
-IN17A096,Dimorphic,New
-IN17A101,Male Specific,New
-IN17A114,Dimorphic,New
-IN18B009,Male Specific,New
-IN18B013,Dimorphic,New
-IN18B029,Dimorphic,New
-IN18B033,Male Specific,New
-IN18B046,Dimorphic,New
-IN18B047,Dimorphic,New
-IN18B055,Dimorphic,New
-IN18B056,Male Specific,New
-IN19A034,Dimorphic,New
-IN19A036,Dimorphic,New
-IN19A121,Dimorphic,New
-IN19A128,Male Specific,New
-IN19A129,Male Specific,New
-IN19A134,Male Specific,New
-IN19A135,Male Specific,New
-IN19A137,Male Specific,New
-IN19A138,Male Specific,New
-IN19A139,Male Specific,New
-IN19A140,Male Specific,New
-IN19A141,Male Specific,New
-IN19B007,Dimorphic,New
-IN19B016,Dimorphic,New
-IN19B029,Male Specific,New
-IN19B066,Dimorphic,New
-IN19B068,Dimorphic,New
-IN19B078,Male Specific,New
-IN20A.22A011,Dimorphic,New
-IN20A.22A012,Male Specific,New
-IN20A.22A013,Male Specific,New
-IN20A.22A022,Dimorphic,New
-IN20A.22A034,Male Specific,New
-IN20A.22A050,Male Specific,New
-IN21A090,Male Specific,New
-IN21A094,Male Specific,New
-IN21A106,Male Specific,New
-IN21A107,Male Specific,New
-IN21A108,Male Specific,New
-IN21A109,Male Specific,New
-IN21A112,Male Specific,New
-IN21A113,Male Specific,New
-IN21A114,Male Specific,New
-IN21A115,Male Specific,New
-IN23B011,Dimorphic,New
-IN23B012,Dimorphic,New
-IN23B021,Male Specific,New
-IN23B029,Male Specific,New
-IN23B035,Male Specific,New
-IN23B042,Male Specific,New
-IN23B076,Male Specific,New
-IN23B082,Male Specific,New
-IN23B090,Dimorphic,New
-IN23B092,Dimorphic,New
-IN23B094,Male Specific,New
-IN27X002,Male Specific,New
-IN27X003,Male Specific,New
-IN27X004,Male Specific,New
-IN27X007,Male Specific,New
-INAbG005,Female Specific,New
-INXXX008,Male Specific,New
-INXXX019,Male Specific,New
-INXXX025,Male Specific,New
-INXXX032,Male Specific,New
-INXXX034,Male Specific,New
-INXXX039,Male Specific,New
-INXXX045,Dimorphic,New
-INXXX052,Dimorphic,New
-INXXX056,Dimorphic,New
-INXXX058,Male Specific,New
-INXXX062,Male Specific,New
-INXXX069,Male Specific,New
-INXXX084,Dimorphic,New
-INXXX087,Male Specific,New
-INXXX091,Dimorphic,New
-INXXX096,Male Specific,New
-INXXX107,Male Specific,New
-INXXX110,Male Specific,New
-INXXX111,Male Specific,New
-INXXX121,Dimorphic,New
-INXXX122,Male Specific,New
-INXXX126,Male Specific,New
-INXXX129,Dimorphic,New
-INXXX137,Xxx Specific,New
-INXXX149,Dimorphic,New
-INXXX159,Dimorphic,New
-INXXX161,Dimorphic,New
-INXXX179,Dimorphic,New
-INXXX180,Dimorphic,New
-INXXX181,Dimorphic,New
-INXXX188,Dimorphic,New
-INXXX192,Dimorphic,New
-INXXX197,Dimorphic,New
-INXXX209,Dimorphic,New
-INXXX211,Dimorphic,New
-INXXX215,Male Specific,New
-INXXX217,Dimorphic,New
-INXXX220,Male Specific,New
-INXXX225,Dimorphic,New
-INXXX228,Dimorphic,New
-INXXX237,Male Specific,New
-INXXX240,Dimorphic,New
-INXXX242,Xxx Specific,New
-INXXX243,Dimorphic,New
-INXXX244,Dimorphic,New
-INXXX246,Male Specific,New
-INXXX251,Male Specific,New
-INXXX258,Dimorphic,New
-INXXX260,Male Specific,New
-INXXX262,Male Specific,New
-INXXX263,Male Specific,New
-INXXX265,Dimorphic,New
-INXXX266,Dimorphic,New
-INXXX267,Dimorphic,New
-INXXX271,Dimorphic,New
-INXXX273,Dimorphic,New
-INXXX275,Male Specific,New
-INXXX279,Dimorphic,New
-INXXX282,Male Specific,New
-INXXX283,Dimorphic,New
-INXXX285,Dimorphic,New
-INXXX290,Dimorphic,New
-INXXX293,Male Specific,New
-INXXX297,Dimorphic,New
-INXXX302,Dimorphic,New
-INXXX303,Dimorphic,New
-INXXX306,Dimorphic,New
-INXXX307,Dimorphic,New
-INXXX309,Dimorphic,New
-INXXX310,Male Specific,New
-INXXX317,Male Specific,New
-INXXX320,Male Specific,New
-INXXX322,Male Specific,New
-INXXX324,Male Specific,New
-INXXX325,Dimorphic,New
-INXXX326,Dimorphic,New
-INXXX333,Dimorphic,New
-INXXX334,Male Specific,New
-INXXX340,Dimorphic,New
-INXXX346,Dimorphic,New
-INXXX348,Dimorphic,New
-INXXX350,Dimorphic,New
-INXXX352,Dimorphic,New
-INXXX353,Dimorphic,New
-INXXX354,Male Specific,New
-INXXX357,Dimorphic,New
-INXXX360,Dimorphic,New
-INXXX366,Male Specific,New
-INXXX369,Dimorphic,New
-INXXX370,Dimorphic,New
-INXXX372,Male Specific,New
-INXXX374,Male Specific,New
-INXXX377,Dimorphic,New
-INXXX378,Dimorphic,New
-INXXX379,Dimorphic,New
-INXXX382,Dimorphic,New
-INXXX387,Xxx Specific,New
-INXXX391,Dimorphic,New
-INXXX392,Male Specific,New
-INXXX394,Dimorphic,New
-INXXX395,Dimorphic,New
-INXXX398,Male Specific,New
-INXXX399,Dimorphic,New
-INXXX401,Male Specific,New
-INXXX407,Dimorphic,New
-INXXX411,Dimorphic,New
-INXXX412,Dimorphic,New
-INXXX416,Dimorphic,New
-INXXX418,Dimorphic,New
-INXXX420,Male Specific,New
-INXXX421,Dimorphic,New
-INXXX423,Male Specific,New
-INXXX424,Male Specific,New
-INXXX425,Male Specific,New
-INXXX430,Male Specific,New
-INXXX431,Dimorphic,New
-INXXX437,Dimorphic,New
-INXXX438,Dimorphic,New
-INXXX439,Male Specific,New
-INXXX442,Male Specific,New
-INXXX443,Dimorphic,New
-INXXX444,Male Specific,New
-INXXX446,Dimorphic,New
-INXXX447,Dimorphic,New
-INXXX451,Male Specific,New
-INXXX452,Dimorphic,New
-INXXX454,Dimorphic,New
-INXXX456,Male Specific,New
-INXXX457,Male Specific,New
-INXXX458,Dimorphic,New
-INXXX459,Dimorphic,New
-INXXX807_f,Female Specific,New
-INXXX808_f,Female Specific,New
-INXXX809_f,Female Specific,New
-INXXX810_f,Female Specific,New
-INXXX811_f,Female Specific,New
-INXXX812_f,Female Specific,New
-INXXX813_f,Female Specific,New
-INXXX814_f,Female Specific,New
-INXXX815_f,Female Specific,New
-INXXX816_f,Female Specific,New
-INXXX817_f,Female Specific,New
-INXXX818_f,Female Specific,New
-INXXX819_f,Female Specific,New
-INXXX820_f,Female Specific,New
-INXXX821_f,Female Specific,New
-INXXX822_f,Female Specific,New
-INXXX823_f,Female Specific,New
-INXXX824_f,Female Specific,New
-INXXX825_f,Female Specific,New
-INXXX826_f,Female Specific,New
-INXXX827_f,Female Specific,New
-INXXX828_f,Female Specific,New
-INXXX829_f,Female Specific,New
-INXXX830_f,Female Specific,New
-INXXX831_f,Female Specific,New
-INXXX832_f,Female Specific,New
-INXXX833_f,Female Specific,New
-INXXX834_f,Female Specific,New
-INXXX835_f,Female Specific,New
-INXXX836_f,Female Specific,New
-INXXX837_f,Female Specific,New
-INXXX838_f,Female Specific,New
-INXXX839_f,Female Specific,New
-INXXX840_f,Female Specific,New
-INXXX841_f,Female Specific,New
-INXXX842_f,Female Specific,New
-INXXX843_f,Female Specific,New
-INXXX844_f,Female Specific,New
-INXXX845_f,Female Specific,New
-INXXX846_f,Female Specific,New
-INXXX847_f,Female Specific,New
-INXXX848_f,Female Specific,New
-INXXX849_f,Female Specific,New
-INXXX850_f,Female Specific,New
-INXXX851_f,Female Specific,New
-INXXX852_f,Female Specific,New
-INXXX853_f,Female Specific,New
-INXXX854_f,Female Specific,New
-INXXX855_f,Female Specific,New
-INXXX856_f,Female Specific,New
-INXXX857_f,Female Specific,New
-INXXX858_f,Female Specific,New
-INXXX859_f,Female Specific,New
-INXXX860_f,Female Specific,New
-INXXX861_f,Female Specific,New
-INXXX862_f,Female Specific,New
-INXXX863_f,Female Specific,New
-INXXX864_f,Female Specific,New
-INXXX865_f,Female Specific,New
-INXXX866_f,Female Specific,New
-INXXX867_f,Female Specific,New
-INXXX868_f,Female Specific,New
-INXXX869_f,Female Specific,New
-INXXX870_f,Female Specific,New
-INXXX871_f,Female Specific,New
-INXXX872_f,Female Specific,New
-INXXX873_f,Female Specific,New
-INXXX874_f,Female Specific,New
-INXXX875_f,Female Specific,New
-INXXX876_f,Female Specific,New
-INXXX877_f,Female Specific,New
-INXXX878_f,Female Specific,New
-INXXX879_f,Female Specific,New
-INXXX880_f,Female Specific,New
-INXXX881_f,Female Specific,New
-INXXX882_f,Female Specific,New
-INXXX883_f,Female Specific,New
-INXXX884_f,Female Specific,New
-INXXX885_f,Female Specific,New
-INXXX886_f,Female Specific,New
-INXXX887_f,Female Specific,New
-INXXX888_f,Female Specific,New
-INXXX889_f,Female Specific,New
-INXXX890_f,Female Specific,New
-INXXX891_f,Female Specific,New
-INXXX892_f,Female Specific,New
-INXXX893_f,Female Specific,New
-INXXX894_f,Female Specific,New
-INXXX895_f,Female Specific,New
-INXXX896_f,Female Specific,New
-INXXX897_f,Female Specific,New
-INXXX898_f,Female Specific,New
-INXXX899_f,Female Specific,New
-INXXX900_f,Female Specific,New
-INXXX901_f,Female Specific,New
-INXXX902_f,Female Specific,New
-INXXX903_f,Female Specific,New
-INXXX904_f,Female Specific,New
-INXXX905_f,Female Specific,New
-INXXX906_f,Female Specific,New
-INXXX907_f,Female Specific,New
-INXXX908_f,Female Specific,New
-INXXX909_f,Female Specific,New
-INXXX910_f,Female Specific,New
-INXXX911_f,Female Specific,New
-INXXX912_f,Female Specific,New
-INXXX913_f,Female Specific,New
-INXXX914_f,Female Specific,New
-INXXX915_f,Female Specific,New
-INXXX916_f,Female Specific,New
-INXXX917_f,Female Specific,New
-INXXX918_f,Female Specific,New
-INXXX919_f,Female Specific,New
-INXXX920_f,Female Specific,New
-INXXX921_f,Female Specific,New
-INXXX922_f,Female Specific,New
-INXXX923_f,Female Specific,New
-INXXX924_f,Female Specific,New
-INXXX925_f,Female Specific,New
-INXXX926_f,Female Specific,New
-INXXX927_f,Female Specific,New
-INXXX928_f,Female Specific,New
-INXXX929_f,Female Specific,New
-INXXX930_f,Female Specific,New
-INXXX931_f,Female Specific,New
-INXXX932_f,Female Specific,New
-INXXX933_f,Female Specific,New
-INXXX934_f,Female Specific,New
-INXXX935_f,Female Specific,New
-INXXX936_f,Female Specific,New
-INXXX937_f,Female Specific,New
-INXXX938_f,Female Specific,New
-INXXX939_f,Female Specific,New
-INXXX940_f,Female Specific,New
-INXXX941_f,Female Specific,New
-INXXX942_f,Female Specific,New
-INXXX943_f,Female Specific,New
-INXXX944_f,Female Specific,New
-INXXX945_f,Female Specific,New
-INXXX946_f,Female Specific,New
-INXXX947_f,Female Specific,New
-INXXX948_f,Female Specific,New
-INXXX949_f,Female Specific,New
-INXXX950_f,Female Specific,New
-INXXX951_f,Female Specific,New
-INXXX952_f,Female Specific,New
-INXXX953_f,Female Specific,New
-INXXX954_f,Female Specific,New
-INXXX955_f,Female Specific,New
-INXXX956_f,Female Specific,New
-INXXX957_f,Female Specific,New
-INXXX958_f,Female Specific,New
-INXXX959_f,Female Specific,New
-INXXX960_f,Female Specific,New
-INXXX961_f,Female Specific,New
-INXXX962_f,Female Specific,New
-INXXX963_f,Female Specific,New
-INXXX964_f,Female Specific,New
-INXXX965_f,Female Specific,New
-INXXX966_f,Female Specific,New
-INXXX967_f,Female Specific,New
-INXXX968_f,Female Specific,New
-INXXX969_f,Female Specific,New
-INXXX970_f,Female Specific,New
-INXXX971_f,Female Specific,New
-INXXX972_f,Female Specific,New
-INXXX973_f,Female Specific,New
-INXXX974_f,Female Specific,New
-INXXX975_f,Female Specific,New
-INXXX976_f,Female Specific,New
-INXXX977_f,Female Specific,New
-INXXX978_f,Female Specific,New
-INXXX979_f,Female Specific,New
-INXXX980_f,Female Specific,New
-INXXX981_f,Female Specific,New
-INXXX982_f,Female Specific,New
-INXXX983_f,Female Specific,New
-INXXX984_f,Female Specific,New
-INXXX985_f,Female Specific,New
-INXXX986_f,Female Specific,New
-INXXX987_f,Female Specific,New
-INXXX988_f,Female Specific,New
-INXXX989_f,Female Specific,New
-INXXX990_f,Female Specific,New
-INXXX991_f,Female Specific,New
-INXXX992_f,Female Specific,New
-INXXX993_f,Female Specific,New
-INXXX994_f,Female Specific,New
-INXXX995_f,Female Specific,New
-INXXX996_f,Female Specific,New
-INXXX997_f,Female Specific,New
-INXXX998_f,Female Specific,New
-INXXX999_f,Female Specific,New
-TN1a,Male Specific,New
-TN1c,Male Specific,New
-aSP22,Dimorphic,<TODO>
-dMS9,Dimorphic,<TODO>
-dPR1,Male Specific,New
-pIP10,Male Specific,<TODO>
-pIP9,Dimorphic,<TODO>
-pMP2,Male Specific,<TODO>
-vMS11,Dimorphic,New
-vMS12,Dimorphic,New
-vMS16,Male Specific,<TODO>
-vMS17,Male Specific,New
-vPR6,Male Specific,New
-vPR9,Male Specific,New
+Cell Type,Category,Reference,Eval
+AN00A006,Dimorphic,,
+AN03A008,Male Specific,,
+AN05B035,Male Specific,,
+AN05B095,Male Specific,,
+AN06B004,Male Specific,,
+AN08B009,Xxx Specific,,
+AN08B020,Male Specific,,
+AN08B031,Dimorphic,,
+AN08B035,Male Specific,,
+AN08B043,Dimorphic,,
+AN08B047,Xxx Specific,,
+AN08B059,Xxx Specific,,
+AN08B061,Xxx Specific,,
+AN08B069,Dimorphic,,
+AN08B084,Male Specific,,
+AN09B012,Dimorphic,,
+AN09B017,Male Specific,,
+AN09B028,Dimorphic,,
+AN10B026,Male Specific,,
+AN12B060,Dimorphic,,
+AN12B089,Dimorphic,,
+AN18B053,Dimorphic,,
+AN19A018,Xxx Specific,,
+AN19B024,Xxx Specific,,
+AN19B104,Dimorphic,,
+AN23B026,Male Specific,,
+AN27X003,Xxx Specific,,
+AN27X019,Male Specific,,
+ANXXX050,Male Specific,,
+ANXXX068,Male Specific,,
+ANXXX071,Male Specific,,
+ANXXX084,Dimorphic,,
+ANXXX116,Dimorphic,,
+ANXXX150,Xxx Specific,,
+ANXXX152,Male Specific,,
+ANXXX254,Dimorphic,,
+DNa08,Dimorphic,,
+DNp48,Dimorphic,,
+DNut044,Male Specific,,
+DNxl053,Male Specific,,
+DNxl074,Dimorphic,,
+DNxl093,Dimorphic,,
+DNxl094,Dimorphic,,
+DNxl103,Dimorphic,,
+IN00A013,Male Specific,New,
+IN00A021,Male Specific,New,
+IN00A023,Male Specific,New,
+IN00A027,Dimorphic,New,type_assembly_errors
+IN00A068,Male Specific,New,
+IN00A069,Male Specific,New,
+IN00A070,Male Specific,New,
+IN00A071,Male Specific,New,
+IN01A013,Male Specific,New,
+IN01A029,Dimorphic,New,internally_consistent
+IN01A037,Dimorphic,New,needs_minor_rectification
+IN01A040,Male Specific,New,
+IN01A041,Male Specific,New,
+IN01A043,Dimorphic,New,needs_detailed_examination
+IN01A051,Dimorphic,New,internally_consistent
+IN01A084,Dimorphic,New,needs_detailed_examination
+IN01B014,Male Specific,New,
+IN01B058,Male Specific,New,
+IN01B088,Xxx Specific,New,
+IN02A006,Male Specific,New,
+IN02A024,Dimorphic,New,internally_consistent
+IN02A039,Dimorphic,New,internally_consistent
+IN03A015,Dimorphic,New,internally_consistent
+IN03A097,Dimorphic,New,internally_consistent
+IN03B024,Dimorphic,New,internally_consistent
+IN03B029,Male Specific,New,
+IN04B009,Male Specific,New,
+IN04B010,Male Specific,New,
+IN04B012,Male Specific,New,
+IN04B013,Male Specific,New,
+IN04B016,Male Specific,New,
+IN04B017,Male Specific,New,
+IN04B018,Male Specific,New,
+IN04B021,Dimorphic,New,needs_minor_rectification
+IN04B024,Male Specific,New,
+IN04B026,Dimorphic,New,needs_detailed_examination
+IN04B030,Male Specific,New,
+IN04B032,Dimorphic,New,type_assembly_errors
+IN04B040,Male Specific,New,
+IN04B048,Male Specific,New,
+IN04B060,Male Specific,New,
+IN04B065,Male Specific,New,
+IN04B076,Male Specific,New,
+IN04B077,Male Specific,New,
+IN04B079,Male Specific,New,
+IN05B008,Male Specific,New,
+IN05B014,Male Specific,New,
+IN05B034,Dimorphic,New,internally_consistent
+IN05B066,Dimorphic,New,needs_minor_rectification
+IN05B073,Dimorphic,New,needs_minor_rectification
+IN05B074,Male Specific,New,
+IN05B084,Male Specific,New,
+IN05B093,Dimorphic,New,needs_detailed_examination
+IN06A024,Dimorphic,New,internally_consistent
+IN06A025,Dimorphic,New,internally_consistent
+IN06A049,Male Specific,New,
+IN06A064,Dimorphic,New,needs_minor_rectification
+IN06A098,Dimorphic,New,needs_detailed_examination
+IN06A105,Dimorphic,New,needs_minor_rectification
+IN06A119,Dimorphic,New,
+IN06A120,Dimorphic,New,needs_minor_rectification
+IN06A121,Dimorphic,New,
+IN06A130,Dimorphic,New,needs_minor_rectification
+IN06A131,Male Specific,New,
+IN06B020,Dimorphic,New,internally_consistent
+IN06B049,Dimorphic,New,internally_consistent
+IN07B061,Dimorphic,New,needs_detailed_examination
+IN07B090,Dimorphic,New,internally_consistent
+IN08A003,Dimorphic,New,needs_detailed_examination
+IN08B003,Xxx Specific,New,
+IN08B029,Male Specific,New,
+IN08B033,Male Specific,New,
+IN08B038,Male Specific,New,
+IN08B040,Male Specific,New,
+IN08B042,Male Specific,New,
+IN08B044,Male Specific,New,
+IN08B045,Male Specific,New,
+IN08B046,Male Specific,New,
+IN08B055,Male Specific,New,
+IN08B062,Male Specific,New,
+IN08B063,Male Specific,New,
+IN08B077,Male Specific,New,
+IN09B052,Dimorphic,New,needs_detailed_examination
+IN09B056,Male Specific,New,
+IN10B001,Male Specific,New,
+IN10B002,Male Specific,New,
+IN10B010,Male Specific,New,
+IN10B013,Male Specific,New,
+IN10B025,Male Specific,New,
+IN10B061,Male Specific,New,
+IN11A002,Male Specific,New,
+IN11A004,Male Specific,New,
+IN11A006,Male Specific,New,
+IN11A045,Male Specific,New,
+IN11B004,Dimorphic,New,type_assembly_errors
+IN12A009,Dimorphic,New,internally_consistent
+IN12A016,Male Specific,New,
+IN12A019,Male Specific,New,
+IN12A021,Dimorphic,New,internally_consistent
+IN12A024,Dimorphic,New,needs_minor_rectification
+IN12A025,Male Specific,New,
+IN12A027,Male Specific,New,
+IN12A029,Male Specific,New,
+IN12A030,Male Specific,New,
+IN12A031,Male Specific,New,
+IN12A037,Male Specific,New,
+IN12A041,Male Specific,New,
+IN12A042,Male Specific,New,
+IN12A047,Male Specific,New,
+IN12A055,Male Specific,New,
+IN12A056,Male Specific,New,
+IN12A064,Male Specific,New,
+IN12B009,Male Specific,New,
+IN12B010,Male Specific,New,
+IN12B020,Male Specific,New,
+IN12B021,Male Specific,New,
+IN12B028,Male Specific,New,
+IN12B045,Male Specific,New,
+IN12B046,Male Specific,New,
+IN12B050,Male Specific,New,
+IN12B051,Male Specific,New,
+IN12B054,Male Specific,New,
+IN12B060,Xxx Specific,New,
+IN12B085,Male Specific,New,
+IN12B091,Male Specific,New,
+IN12B092,Male Specific,New,
+IN13A019,Dimorphic,New,internally_consistent
+IN13A066,Male Specific,New,
+IN13A070,Male Specific,New,
+IN13A073,Male Specific,New,
+IN13B101,Male Specific,New,
+IN14A016,Dimorphic,New,internally_consistent
+IN14A027,Male Specific,New,
+IN14A029,Male Specific,New,
+IN14A122,Male Specific,New,
+IN14A124,Male Specific,New,
+IN14B003,Dimorphic,New,internally_consistent
+IN14B008,Dimorphic,New,internally_consistent
+IN14B014,Male Specific,New,
+IN16B049,Dimorphic,New,type_assembly_errors
+IN17A037,Male Specific,New,
+IN17A051,Male Specific,New,
+IN17A053,Male Specific,New,
+IN17A066,Male Specific,New,
+IN17A087,Dimorphic,New,needs_detailed_examination
+IN17A092,Male Specific,New,
+IN17A094,Dimorphic,New,internally_consistent
+IN17A096,Dimorphic,New,needs_minor_rectification
+IN17A101,Male Specific,New,
+IN17A114,Dimorphic,New,internally_consistent
+IN18B009,Male Specific,New,
+IN18B013,Dimorphic,New,needs_detailed_examination
+IN18B029,Dimorphic,New,type_assembly_errors
+IN18B033,Male Specific,New,
+IN18B046,Dimorphic,New,internally_consistent
+IN18B047,Dimorphic,New,internally_consistent
+IN18B055,Dimorphic,New,internally_consistent
+IN18B056,Male Specific,New,
+IN19A034,Dimorphic,New,internally_consistent
+IN19A036,Dimorphic,New,internally_consistent
+IN19A121,Dimorphic,New,internally_consistent
+IN19A128,Male Specific,New,
+IN19A129,Male Specific,New,
+IN19A134,Male Specific,New,
+IN19A135,Male Specific,New,
+IN19A137,Male Specific,New,
+IN19A138,Male Specific,New,
+IN19A139,Male Specific,New,
+IN19A140,Male Specific,New,
+IN19A141,Male Specific,New,
+IN19B007,Dimorphic,New,needs_minor_rectification
+IN19B016,Dimorphic,New,internally_consistent
+IN19B029,Male Specific,New,
+IN19B066,Dimorphic,New,needs_detailed_examination
+IN19B068,Dimorphic,New,internally_consistent
+IN19B078,Male Specific,New,
+IN20A.22A011,Dimorphic,New,needs_detailed_examination
+IN20A.22A012,Male Specific,New,
+IN20A.22A013,Male Specific,New,
+IN20A.22A022,Dimorphic,New,type_assembly_errors
+IN20A.22A034,Male Specific,New,
+IN20A.22A050,Male Specific,New,
+IN21A090,Male Specific,New,
+IN21A094,Male Specific,New,
+IN21A106,Male Specific,New,
+IN21A107,Male Specific,New,
+IN21A108,Male Specific,New,
+IN21A109,Male Specific,New,
+IN21A112,Male Specific,New,
+IN21A113,Male Specific,New,
+IN21A114,Male Specific,New,
+IN21A115,Male Specific,New,
+IN23B011,Dimorphic,New,internally_consistent
+IN23B012,Dimorphic,New,internally_consistent
+IN23B021,Male Specific,New,
+IN23B029,Male Specific,New,
+IN23B035,Male Specific,New,
+IN23B042,Male Specific,New,
+IN23B076,Male Specific,New,
+IN23B082,Male Specific,New,
+IN23B090,Dimorphic,New,internally_consistent
+IN23B092,Dimorphic,New,internally_consistent
+IN23B094,Male Specific,New,
+IN27X002,Male Specific,New,
+IN27X003,Male Specific,New,
+IN27X004,Male Specific,New,
+IN27X007,Male Specific,New,
+INAbG005,Female Specific,New,
+INXXX008,Male Specific,New,
+INXXX019,Male Specific,New,
+INXXX025,Male Specific,New,
+INXXX032,Male Specific,New,
+INXXX034,Male Specific,New,
+INXXX039,Male Specific,New,
+INXXX045,Dimorphic,New,internally_consistent
+INXXX052,Dimorphic,New,internally_consistent
+INXXX056,Dimorphic,New,internally_consistent
+INXXX058,Male Specific,New,
+INXXX062,Male Specific,New,
+INXXX069,Male Specific,New,
+INXXX084,Dimorphic,New,needs_minor_rectification
+INXXX087,Male Specific,New,
+INXXX091,Dimorphic,New,internally_consistent
+INXXX096,Male Specific,New,
+INXXX107,Male Specific,New,
+INXXX110,Male Specific,New,
+INXXX111,Male Specific,New,
+INXXX121,Dimorphic,New,internally_consistent
+INXXX122,Male Specific,New,
+INXXX126,Male Specific,New,
+INXXX129,Dimorphic,New,internally_consistent
+INXXX137,Xxx Specific,New,
+INXXX149,Dimorphic,New,needs_detailed_examination
+INXXX159,Dimorphic,New,internally_consistent
+INXXX161,Dimorphic,New,needs_minor_rectification
+INXXX179,Dimorphic,New,internally_consistent
+INXXX180,Dimorphic,New,internally_consistent
+INXXX181,Dimorphic,New,needs_minor_rectification
+INXXX188,Dimorphic,New,needs_minor_rectification
+INXXX192,Dimorphic,New,internally_consistent
+INXXX197,Dimorphic,New,needs_detailed_examination
+INXXX209,Dimorphic,New,type_assembly_errors
+INXXX211,Dimorphic,New,needs_detailed_examination
+INXXX215,Male Specific,New,
+INXXX217,Dimorphic,New,needs_detailed_examination
+INXXX220,Male Specific,New,
+INXXX225,Dimorphic,New,type_assembly_errors
+INXXX228,Dimorphic,New,needs_detailed_examination
+INXXX237,Male Specific,New,
+INXXX240,Dimorphic,New,needs_detailed_examination
+INXXX242,Male Specific,New,
+INXXX243,Dimorphic,New,needs_detailed_examination
+INXXX244,Dimorphic,New,needs_detailed_examination
+INXXX246,Male Specific,New,
+INXXX251,Male Specific,New,
+INXXX258,Dimorphic,New,needs_detailed_examination
+INXXX260,Male Specific,New,
+INXXX262,Male Specific,New,
+INXXX263,Male Specific,New,
+INXXX265,Dimorphic,New,needs_detailed_examination
+INXXX266,Dimorphic,New,internally_consistent
+INXXX267,Dimorphic,New,needs_detailed_examination
+INXXX271,Dimorphic,New,needs_minor_rectification
+INXXX273,Dimorphic,New,needs_detailed_examination
+INXXX275,Male Specific,New,
+INXXX279,Dimorphic,New,needs_detailed_examination
+INXXX282,Male Specific,New,
+INXXX283,Dimorphic,New,needs_detailed_examination
+INXXX285,Dimorphic,New,needs_detailed_examination
+INXXX290,Dimorphic,New,internally_consistent
+INXXX293,Male Specific,New,
+INXXX297,Dimorphic,New,needs_minor_rectification
+INXXX302,Dimorphic,New,needs_detailed_examination
+INXXX303,Dimorphic,New,needs_detailed_examination
+INXXX306,Dimorphic,New,needs_detailed_examination
+INXXX307,Dimorphic,New,type_assembly_errors
+INXXX309,Dimorphic,New,type_assembly_errors
+INXXX310,Male Specific,New,
+INXXX317,Male Specific,New,
+INXXX320,Male Specific,New,
+INXXX322,Male Specific,New,
+INXXX324,Male Specific,New,
+INXXX325,Dimorphic,New,type_assembly_errors
+INXXX326,Dimorphic,New,type_assembly_errors
+INXXX333,Dimorphic,New,type_assembly_errors
+INXXX334,Male Specific,New,
+INXXX340,Dimorphic,New,internally_consistent
+INXXX346,Dimorphic,New,type_assembly_errors
+INXXX348,Dimorphic,New,needs_detailed_examination
+INXXX350,Dimorphic,New,needs_detailed_examination
+INXXX352,Dimorphic,New,needs_detailed_examination
+INXXX353,Dimorphic,New,needs_detailed_examination
+INXXX354,Male Specific,New,
+INXXX357,Dimorphic,New,needs_minor_rectification
+INXXX360,Dimorphic,New,type_assembly_errors
+INXXX366,Male Specific,New,
+INXXX369,Dimorphic,New,needs_minor_rectification
+INXXX370,Dimorphic,New,needs_detailed_examination
+INXXX372,Male Specific,New,
+INXXX374,Male Specific,New,
+INXXX377,Dimorphic,New,internally_consistent
+INXXX378,Dimorphic,New,type_assembly_errors
+INXXX379,Dimorphic,New,type_assembly_errors
+INXXX382,Dimorphic,New,needs_detailed_examination
+INXXX387,Male Specific,New,
+INXXX391,Dimorphic,New,needs_minor_rectification
+INXXX392,Male Specific,New,
+INXXX394,Dimorphic,New,needs_detailed_examination
+INXXX395,Dimorphic,New,needs_detailed_examination
+INXXX398,Male Specific,New,
+INXXX399,Dimorphic,New,internally_consistent
+INXXX401,Male Specific,New,
+INXXX407,Dimorphic,New,needs_minor_rectification
+INXXX411,Dimorphic,New,needs_detailed_examination
+INXXX412,Dimorphic,New,
+INXXX416,Dimorphic,New,needs_detailed_examination
+INXXX418,Dimorphic,New,type_assembly_errors
+INXXX420,Male Specific,New,
+INXXX421,Dimorphic,New,type_assembly_errors
+INXXX423,Male Specific,New,
+INXXX424,Male Specific,New,
+INXXX425,Male Specific,New,
+INXXX430,Male Specific,New,
+INXXX431,Dimorphic,New,type_assembly_errors
+INXXX437,Dimorphic,New,internally_consistent
+INXXX438,Dimorphic,New,needs_detailed_examination
+INXXX439,Male Specific,New,
+INXXX442,Male Specific,New,
+INXXX443,Dimorphic,New,
+INXXX444,Male Specific,New,
+INXXX446,Dimorphic,New,type_assembly_errors
+INXXX447,Dimorphic,New,needs_detailed_examination
+INXXX451,Male Specific,New,
+INXXX452,Dimorphic,New,needs_detailed_examination
+INXXX454,Dimorphic,New,needs_detailed_examination
+INXXX456,Male Specific,New,
+INXXX457,Male Specific,New,
+INXXX458,Dimorphic,New,internally_consistent
+INXXX459,Dimorphic,New,needs_detailed_examination
+INXXX807_f,Female Specific,New,
+INXXX808_f,Female Specific,New,
+INXXX809_f,Female Specific,New,
+INXXX810_f,Female Specific,New,
+INXXX811_f,Female Specific,New,
+INXXX812_f,Female Specific,New,
+INXXX813_f,Female Specific,New,
+INXXX814_f,Female Specific,New,
+INXXX815_f,Female Specific,New,
+INXXX816_f,Female Specific,New,
+INXXX817_f,Female Specific,New,
+INXXX818_f,Female Specific,New,
+INXXX819_f,Female Specific,New,
+INXXX820_f,Female Specific,New,
+INXXX821_f,Female Specific,New,
+INXXX822_f,Female Specific,New,
+INXXX823_f,Female Specific,New,
+INXXX824_f,Female Specific,New,
+INXXX825_f,Female Specific,New,
+INXXX826_f,Female Specific,New,
+INXXX827_f,Female Specific,New,
+INXXX828_f,Female Specific,New,
+INXXX829_f,Female Specific,New,
+INXXX830_f,Female Specific,New,
+INXXX831_f,Female Specific,New,
+INXXX832_f,Female Specific,New,
+INXXX833_f,Female Specific,New,
+INXXX834_f,Female Specific,New,
+INXXX835_f,Female Specific,New,
+INXXX836_f,Female Specific,New,
+INXXX837_f,Female Specific,New,
+INXXX838_f,Female Specific,New,
+INXXX839_f,Female Specific,New,
+INXXX840_f,Female Specific,New,
+INXXX841_f,Female Specific,New,
+INXXX842_f,Female Specific,New,
+INXXX843_f,Female Specific,New,
+INXXX844_f,Female Specific,New,
+INXXX845_f,Female Specific,New,
+INXXX846_f,Female Specific,New,
+INXXX847_f,Female Specific,New,
+INXXX848_f,Female Specific,New,
+INXXX849_f,Female Specific,New,
+INXXX850_f,Female Specific,New,
+INXXX851_f,Female Specific,New,
+INXXX852_f,Female Specific,New,
+INXXX853_f,Female Specific,New,
+INXXX854_f,Female Specific,New,
+INXXX855_f,Female Specific,New,
+INXXX856_f,Female Specific,New,
+INXXX857_f,Female Specific,New,
+INXXX858_f,Female Specific,New,
+INXXX859_f,Female Specific,New,
+INXXX860_f,Female Specific,New,
+INXXX861_f,Female Specific,New,
+INXXX862_f,Female Specific,New,
+INXXX863_f,Female Specific,New,
+INXXX864_f,Female Specific,New,
+INXXX865_f,Female Specific,New,
+INXXX866_f,Female Specific,New,
+INXXX867_f,Female Specific,New,
+INXXX868_f,Female Specific,New,
+INXXX869_f,Female Specific,New,
+INXXX870_f,Female Specific,New,
+INXXX871_f,Female Specific,New,
+INXXX872_f,Female Specific,New,
+INXXX873_f,Female Specific,New,
+INXXX874_f,Female Specific,New,
+INXXX875_f,Female Specific,New,
+INXXX876_f,Female Specific,New,
+INXXX877_f,Female Specific,New,
+INXXX878_f,Female Specific,New,
+INXXX879_f,Female Specific,New,
+INXXX880_f,Female Specific,New,
+INXXX881_f,Female Specific,New,
+INXXX882_f,Female Specific,New,
+INXXX883_f,Female Specific,New,
+INXXX884_f,Female Specific,New,
+INXXX885_f,Female Specific,New,
+INXXX886_f,Female Specific,New,
+INXXX887_f,Female Specific,New,
+INXXX888_f,Female Specific,New,
+INXXX889_f,Female Specific,New,
+INXXX890_f,Female Specific,New,
+INXXX891_f,Female Specific,New,
+INXXX892_f,Female Specific,New,
+INXXX893_f,Female Specific,New,
+INXXX894_f,Female Specific,New,
+INXXX895_f,Female Specific,New,
+INXXX896_f,Female Specific,New,
+INXXX897_f,Female Specific,New,
+INXXX898_f,Female Specific,New,
+INXXX899_f,Female Specific,New,
+INXXX900_f,Female Specific,New,
+INXXX901_f,Female Specific,New,
+INXXX902_f,Female Specific,New,
+INXXX903_f,Female Specific,New,
+INXXX904_f,Female Specific,New,
+INXXX905_f,Female Specific,New,
+INXXX906_f,Female Specific,New,
+INXXX907_f,Female Specific,New,
+INXXX908_f,Female Specific,New,
+INXXX909_f,Female Specific,New,
+INXXX910_f,Female Specific,New,
+INXXX911_f,Female Specific,New,
+INXXX912_f,Female Specific,New,
+INXXX913_f,Female Specific,New,
+INXXX914_f,Female Specific,New,
+INXXX915_f,Female Specific,New,
+INXXX916_f,Female Specific,New,
+INXXX917_f,Female Specific,New,
+INXXX918_f,Female Specific,New,
+INXXX919_f,Female Specific,New,
+INXXX920_f,Female Specific,New,
+INXXX921_f,Female Specific,New,
+INXXX922_f,Female Specific,New,
+INXXX923_f,Female Specific,New,
+INXXX924_f,Female Specific,New,
+INXXX925_f,Female Specific,New,
+INXXX926_f,Female Specific,New,
+INXXX927_f,Female Specific,New,
+INXXX928_f,Female Specific,New,
+INXXX929_f,Female Specific,New,
+INXXX930_f,Female Specific,New,
+INXXX931_f,Female Specific,New,
+INXXX932_f,Female Specific,New,
+INXXX933_f,Female Specific,New,
+INXXX934_f,Female Specific,New,
+INXXX935_f,Female Specific,New,
+INXXX936_f,Female Specific,New,
+INXXX937_f,Female Specific,New,
+INXXX938_f,Female Specific,New,
+INXXX939_f,Female Specific,New,
+INXXX940_f,Female Specific,New,
+INXXX941_f,Female Specific,New,
+INXXX942_f,Female Specific,New,
+INXXX943_f,Female Specific,New,
+INXXX944_f,Female Specific,New,
+INXXX945_f,Female Specific,New,
+INXXX946_f,Female Specific,New,
+INXXX947_f,Female Specific,New,
+INXXX948_f,Female Specific,New,
+INXXX949_f,Female Specific,New,
+INXXX950_f,Female Specific,New,
+INXXX951_f,Female Specific,New,
+INXXX952_f,Female Specific,New,
+INXXX953_f,Female Specific,New,
+INXXX954_f,Female Specific,New,
+INXXX955_f,Female Specific,New,
+INXXX956_f,Female Specific,New,
+INXXX957_f,Female Specific,New,
+INXXX958_f,Female Specific,New,
+INXXX959_f,Female Specific,New,
+INXXX960_f,Female Specific,New,
+INXXX961_f,Female Specific,New,
+INXXX962_f,Female Specific,New,
+INXXX963_f,Female Specific,New,
+INXXX964_f,Female Specific,New,
+INXXX965_f,Female Specific,New,
+INXXX966_f,Female Specific,New,
+INXXX967_f,Female Specific,New,
+INXXX968_f,Female Specific,New,
+INXXX969_f,Female Specific,New,
+INXXX970_f,Female Specific,New,
+INXXX971_f,Female Specific,New,
+INXXX972_f,Female Specific,New,
+INXXX973_f,Female Specific,New,
+INXXX974_f,Female Specific,New,
+INXXX975_f,Female Specific,New,
+INXXX976_f,Female Specific,New,
+INXXX977_f,Female Specific,New,
+INXXX978_f,Female Specific,New,
+INXXX979_f,Female Specific,New,
+INXXX980_f,Female Specific,New,
+INXXX981_f,Female Specific,New,
+INXXX982_f,Female Specific,New,
+INXXX983_f,Female Specific,New,
+INXXX984_f,Female Specific,New,
+INXXX985_f,Female Specific,New,
+INXXX986_f,Female Specific,New,
+INXXX987_f,Female Specific,New,
+INXXX988_f,Female Specific,New,
+INXXX989_f,Female Specific,New,
+INXXX990_f,Female Specific,New,
+INXXX991_f,Female Specific,New,
+INXXX992_f,Female Specific,New,
+INXXX993_f,Female Specific,New,
+INXXX994_f,Female Specific,New,
+INXXX995_f,Female Specific,New,
+INXXX996_f,Female Specific,New,
+INXXX997_f,Female Specific,New,
+INXXX998_f,Female Specific,New,
+INXXX999_f,Female Specific,New,
+TN1a,Male Specific,New,
+TN1c,Male Specific,New,
+aSP22,Dimorphic,,
+dMS9,Dimorphic,,
+dPR1,Male Specific,New,
+pIP10,Male Specific,,
+pIP9,Dimorphic,,
+pMP2,Male Specific,,
+vMS11,Dimorphic,New,needs_minor_rectification
+vMS12,Dimorphic,New,needs_minor_rectification
+vMS16,Male Specific,,
+vMS17,Male Specific,New,
+vPR6,Male Specific,New,
+vPR9,Male Specific,New,
